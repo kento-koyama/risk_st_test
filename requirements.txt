@@ -1,7 +1,3 @@
-streamlit
 pandas
-ydata-profiling
-streamlit-pandas-profiling
-pydantic-settings
-langchain-core<0.2.0,>=0.1.33
-langsmith<0.2.0,>=0.1.0
+pygwalker
+streamlit
