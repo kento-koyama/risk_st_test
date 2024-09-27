@@ -29,17 +29,22 @@ bacteria_counts = df['Bacteria'].value_counts().reset_index()
 # カラム名の変更
 bacteria_counts.columns = ['バクテリア名', 'カウント数']
 
-# テーブルの表示
-st.write('バクテリアのカウント数:')
-st.dataframe(bacteria_counts)
+# サイドバイサイドのレイアウト
+col1, col2 = st.columns(2)
 
-# バクテリアカウントをグラフで可視化
-fig, ax = plt.subplots(figsize=(10, 6))
-ax.barh(bacteria_counts['バクテリア名'], bacteria_counts['カウント数'], color='skyblue')
-ax.set_xlabel('カウント数')
-ax.set_ylabel('バクテリア名')
-ax.set_title('バクテリアのカウント数')
-ax.invert_yaxis()  # バーを上から降順に表示
+with col1:
+    # テーブルの表示
+    st.write('バクテリアのカウント数:')
+    st.dataframe(bacteria_counts)
 
-# グラフを表示
-st.pyplot(fig)
+with col2:
+    # バクテリアカウントをグラフで可視化
+    fig, ax = plt.subplots(figsize=(10, 6))
+    ax.barh(bacteria_counts['バクテリア名'], bacteria_counts['カウント数'], color='skyblue')
+    ax.set_xlabel('カウント数')
+    ax.set_ylabel('バクテリア名')
+    ax.set_title('バクテリアのカウント数')
+    ax.invert_yaxis()  # バーを上から降順に表示
+    
+    # グラフを表示
+    st.pyplot(fig)
