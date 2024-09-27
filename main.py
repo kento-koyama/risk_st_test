@@ -1,6 +1,16 @@
 import streamlit as st
 import pandas as pd
 
+"""
+# フォントファイルのパスを設定
+font_path = 'NotoSansCJKjp-Regular.otf'  # プロジェクトディレクトリ内のフォントファイルを指定
+
+# フォントのプロパティを設定
+fm.fontManager.addfont(font_path)
+font_prop = fm.FontProperties(fname=font_path)
+plt.rcParams['font.family'] = font_prop.get_name()
+"""
+
 # Streamlitアプリのタイトル
 st.title('バクテリアデータ可視化アプリ')
 
