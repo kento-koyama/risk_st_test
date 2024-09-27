@@ -1,4 +1,9 @@
 streamlit
 pandas
-pandas-profiling
+pandas-profiling<3.0.0
 streamlit-pandas-profiling
+pydantic-settings
+numpy<1.22.2
+scipy<1.8.0
+langchain-core<0.2.0,>=0.1.33
+langsmith<0.2.0,>=0.1.0
