@@ -2,6 +2,8 @@ import streamlit as st
 import pandas as pd
 
 """
+import matplotlib.font_manager as fm
+
 # フォントファイルのパスを設定
 font_path = 'NotoSansCJKjp-Regular.otf'  # プロジェクトディレクトリ内のフォントファイルを指定
 
