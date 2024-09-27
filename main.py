@@ -1,12 +1,5 @@
 import streamlit as st
 import pandas as pd
-import matplotlib.pyplot as plt
-import matplotlib.font_manager as fm
-
-# 日本語フォントを設定
-font_path = '/usr/share/fonts/truetype/fonts-japanese-gothic.ttf'  # IPAexGothicのパスを指定
-font_prop = fm.FontProperties(fname=font_path)
-plt.rcParams['font.family'] = font_prop.get_name()
 
 # Streamlitアプリのタイトル
 st.title('バクテリアデータ可視化アプリ')
@@ -27,13 +20,3 @@ bacteria_counts.columns = ['バクテリア名', 'カウント数']
 # テーブルの表示
 st.write("バクテリア名とカウント数のテーブル")
 st.write(bacteria_counts)
-
-# バクテリアカウントをグラフで可視化
-st.write("バクテリアのカウント数のグラフ")
-fig, ax = plt.subplots(figsize=(10, 6))
-ax.barh(bacteria_counts['バクテリア名'], bacteria_counts['カウント数'], color='skyblue')
-ax.set_xlabel('カウント数', fontproperties=font_prop)
-ax.set_ylabel('バクテリア名', fontproperties=font_prop)
-ax.set_title('バクテリアのカウント数', fontproperties=font_prop)
-ax.invert_yaxis()  # バーを上から降順に表示
-st.pyplot(fig)
