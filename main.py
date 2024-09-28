@@ -43,10 +43,10 @@ with col2:
     ax.barh(bacteria_counts['バクテリア名'], bacteria_counts['カウント数'], color='skyblue')
     
     # Adjusting font sizes
-    ax.set_xlabel('陽性_陰性の検査数', fontsize=14)
-    ax.set_ylabel('細菌数', fontsize=14)
-    ax.set_title('陽性_陰性の検査数', fontsize=16)
-    ax.tick_params(axis='both', which='major', labelsize=12)
+    ax.set_xlabel('陽性_陰性の検査数', fontsize=18)
+    ax.set_ylabel('細菌数', fontsize=18)
+    ax.set_title('陽性_陰性の検査数', fontsize=20)
+    ax.tick_params(axis='both', which='major', labelsize=18)
     
     ax.invert_yaxis()  # バーを上から降順に表示
     
