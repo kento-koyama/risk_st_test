@@ -39,11 +39,11 @@ with col1:
 
 with col2:
     # バクテリアカウントをグラフで可視化
-    fig, ax = plt.subplots(figsize=(10, 6))
+    fig, ax = plt.subplots(figsize=(6, 6))
     ax.barh(bacteria_counts['バクテリア名'], bacteria_counts['カウント数'], color='skyblue')
     
     # Adjusting font sizes
-    ax.set_xlabel('陽性_陰性の検査数, fontsize=14)
+    ax.set_xlabel('陽性_陰性の検査数', fontsize=14)
     ax.set_ylabel('細菌数', fontsize=14)
     ax.set_title('陽性_陰性の検査数', fontsize=16)
     ax.tick_params(axis='both', which='major', labelsize=12)
