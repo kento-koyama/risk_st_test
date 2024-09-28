@@ -10,7 +10,7 @@ csv_url = "https://raw.githubusercontent.com/kento-koyama/food_micro_data_risk/m
 font_path = 'NotoSansCJKjp-Regular.otf'  # プロジェクトディレクトリ内のフォントファイルを指定
 
 # Streamlit のアプリケーション
-st.title('食中毒細菌の陽性/陰性の検査数')
+st.title('食中毒細菌の陽性/陰性の検査の統計まとめ')
 st.write('食中毒細菌汚染実態_汚染率.csvの可視化です。')
 # フォントの設定
 fm.fontManager.addfont(font_path)
@@ -45,7 +45,7 @@ with col2:
     # Adjusting font sizes
     ax.set_xlabel('陽性/陰性の検査数', fontsize=18)
     ax.set_ylabel('細菌数', fontsize=18)
-    ax.set_title('陽性_陰性の検査数', fontsize=20)
+    ax.set_title('陽性/陰性の検査数', fontsize=20)
     ax.tick_params(axis='both', which='major', labelsize=18)
     
     ax.invert_yaxis()  # バーを上から降順に表示
