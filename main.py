@@ -10,7 +10,7 @@ csv_url = "https://raw.githubusercontent.com/kento-koyama/food_micro_data_risk/m
 font_path = 'NotoSansCJKjp-Regular.otf'  # プロジェクトディレクトリ内のフォントファイルを指定
 
 # Streamlit のアプリケーション
-st.title('陽性_陰性の検査数')
+st.title('食中毒細菌の陽性/陰性の検査数')
 
 # フォントの設定
 fm.fontManager.addfont(font_path)
@@ -34,7 +34,7 @@ col1, col2 = st.columns(2)
 
 with col1:
     # テーブルの表示
-    st.write('細菌毎の陽性_陰性の検査数:')
+    st.write('細菌毎の陽性/陰性の検査数:')
     st.dataframe(bacteria_counts)
 
 with col2:
@@ -43,7 +43,7 @@ with col2:
     ax.barh(bacteria_counts['バクテリア名'], bacteria_counts['カウント数'], color='skyblue')
     
     # Adjusting font sizes
-    ax.set_xlabel('陽性_陰性の検査数', fontsize=18)
+    ax.set_xlabel('陽性/陰性の検査数', fontsize=18)
     ax.set_ylabel('細菌数', fontsize=18)
     ax.set_title('陽性_陰性の検査数', fontsize=20)
     ax.tick_params(axis='both', which='major', labelsize=18)
