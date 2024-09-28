@@ -50,6 +50,7 @@ with col2:
     ax.tick_params(axis='both', which='major', labelsize=18)
     
     ax.invert_yaxis()  # バーを上から降順に表示
+st.write('-----------')
     
     # グラフを表示
     st.pyplot(fig)
