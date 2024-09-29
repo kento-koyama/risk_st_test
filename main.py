@@ -12,7 +12,7 @@ font_path = 'NotoSansCJKjp-Regular.otf'  # プロジェクトディレクトリ�
 # Streamlit のアプリケーション
 st.title('食中毒細菌の陽性/陰性の検査の統計まとめ')
 st.write('食中毒細菌汚染実態_汚染率.csvの可視化です。')
-st.write('カーソルを表の右上に合わせると、表をcsvファイルとしてダウンロードできます。')
+st.write('表の右上に表示されるボタンから、表をcsvファイルとしてダウンロードできます。')
 st.write('-----------')
 # フォントの設定
 fm.fontManager.addfont(font_path)
