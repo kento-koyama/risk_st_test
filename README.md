@@ -1,7 +1,7 @@
 # risk_st_test
 
-streamlit cloudにアップロードしてみてください。<br><br>
-小山の方でやってみた例<br>
+開発者へ、streamlit cloudにアップロードしてみてください。<br><br>
+アプリ：小山がデプロイした例<br>
 https://m7gk8u5qjmoysfsmf5kgqk.streamlit.app/<br>
 
 
