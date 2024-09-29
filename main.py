@@ -23,7 +23,8 @@ plt.rcParams['font.family'] = font_prop.get_name()
 df = pd.read_csv(csv_url)
 
 # 欠損値の削除
-df = df.dropna(how='any', axis=0)
+#df = df.dropna(how='any', axis=0)
+df = df[df['陽性数'].notna()]
 
 # バクテリア名のカウント
 bacteria_counts = df['Bacteria'].value_counts().reset_index()
