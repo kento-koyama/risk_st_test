@@ -14,6 +14,7 @@ st.title('食中毒細菌の陽性/陰性の検査の統計まとめ')
 st.write('食中毒細菌汚染実態_汚染率.csvの可視化です。')
 st.write('表の右上に表示されるボタンから、表をcsvファイルとしてダウンロードできます。')
 st.write('-----------')
+
 # フォントの設定
 fm.fontManager.addfont(font_path)
 font_prop = fm.FontProperties(fname=font_path)
@@ -23,8 +24,15 @@ plt.rcParams['font.family'] = font_prop.get_name()
 df = pd.read_csv(csv_url)
 
 # 欠損値の削除
-#df = df.dropna(how='any', axis=0)
 df = df[df['陽性数'].notna()]
+
+# サイドバーで食品群を選択
+food_groups = df['食品群'].unique()  # ユニークな食品群を取得
+selected_group = st.sidebar.selectbox('食品群を選択してください:', ['すべて'] + list(food_groups))
+
+# 選択された食品群に基づいてデータをフィルタリング
+if selected_group != 'すべて':
+    df = df[df['食品群'] == selected_group]
 
 # バクテリア名のカウント
 bacteria_counts = df['Bacteria'].value_counts().reset_index()
@@ -55,4 +63,5 @@ with col2:
     
     # グラフを表示
     st.pyplot(fig)
+
 st.write('-----------')
