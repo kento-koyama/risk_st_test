@@ -21,7 +21,7 @@ font_prop = fm.FontProperties(fname=font_path)
 plt.rcParams['font.family'] = font_prop.get_name()
 
 # データの読み込み
-df = pd.read_csv(csv_url)
+df = pd.read_csv(csv_url, encoding='utf-8-sig')
 
 # 欠損値の削除
 df = df[df['陽性数'].notna()]
