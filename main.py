@@ -32,7 +32,7 @@ selected_group = st.sidebar.selectbox('食品群を選択してください:', [
 
 # 選択された食品群に基づいてデータをフィルタリング
 if selected_group != 'すべて':
-    df = df[df['食品群'] == selected_group]
+    df = df[df['食品カテゴリ'] == selected_group]
 
 # バクテリア名のカウント
 bacteria_counts = df['Bacteria'].value_counts().reset_index()
