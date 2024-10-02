@@ -27,7 +27,7 @@ df = pd.read_csv(csv_url)
 df = df[df['陽性数'].notna()]
 
 # サイドバーで食品群を選択
-food_groups = df['食品群'].unique()  # ユニークな食品群を取得
+food_groups = df['食品カテゴリ'].unique()  # ユニークな食品群を取得
 selected_group = st.sidebar.selectbox('食品群を選択してください:', ['すべて'] + list(food_groups))
 
 # 選択された食品群に基づいてデータをフィルタリング
