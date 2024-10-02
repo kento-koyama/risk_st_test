@@ -35,7 +35,7 @@ if selected_group != 'すべて':
     df = df[df['食品カテゴリ'] == selected_group]
 
 # バクテリア名のカウント
-bacteria_counts = df['Bacteria'].value_counts().reset_index()
+bacteria_counts = df['細菌名'].value_counts().reset_index()
 
 # カラム名の変更
 bacteria_counts.columns = ['バクテリア名', 'カウント数']
