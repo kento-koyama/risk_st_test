@@ -10,7 +10,7 @@ csv_url = "https://raw.githubusercontent.com/kento-koyama/food_micro_data_risk/m
 font_path = 'NotoSansCJKjp-Regular.otf'  # プロジェクトディレクトリ内のフォントファイルを指定
 
 # Streamlit のアプリケーション
-st.title('食中毒細菌の陽性割合の統計まとめ')
+st.title('食中毒細菌の陽性割合の統計値')
 st.write('食中毒細菌汚染実態_汚染率.csvの可視化です。')
 st.write('表の右上に表示されるボタンから、表をcsvファイルとしてダウンロードできます。')
 st.write('-----------')
