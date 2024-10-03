@@ -10,7 +10,7 @@ csv_url = "https://raw.githubusercontent.com/kento-koyama/food_micro_data_risk/m
 font_path = 'NotoSansCJKjp-Regular.otf'  # プロジェクトディレクトリ内のフォントファイルを指定
 
 # Streamlit のアプリケーション
-st.title('食中毒細菌の陽性/陰性の検査の統計まとめ')
+st.title('食中毒細菌の検体数の統計まとめ')
 st.write('食中毒細菌汚染実態_汚染率.csvの可視化です。')
 st.write('表の右上に表示されるボタンから、表をcsvファイルとしてダウンロードできます。')
 st.write('-----------')
@@ -23,8 +23,8 @@ plt.rcParams['font.family'] = font_prop.get_name()
 # データの読み込み
 df = pd.read_csv(csv_url, encoding='utf-8-sig')
 
-# 欠損値の削除
-df = df[df['陽性数'].notna()]
+# 必要なカラムの欠損値を削除（仮に '検体数' というカラムが存在すると仮定）
+df = df[df['検体数'].notna()]
 
 # サイドバーで食品群を選択
 food_groups = df['食品カテゴリ'].unique()  # ユニークな食品群を取得
@@ -34,29 +34,29 @@ selected_group = st.sidebar.selectbox('食品群を選択してください:', [
 if selected_group != 'すべて':
     df = df[df['食品カテゴリ'] == selected_group]
 
-# バクテリア名のカウント
-bacteria_counts = df['細菌名'].value_counts().reset_index()
+# 細菌ごとの検体数の合計を計算
+bacteria_counts = df.groupby('細菌名')['検体数'].sum().reset_index()
 
 # カラム名の変更
-bacteria_counts.columns = ['バクテリア名', 'カウント数']
+bacteria_counts.columns = ['バクテリア名', '検体数の合計']
 
 # サイドバイサイドのレイアウト
 col1, col2 = st.columns(2)
 
 with col1:
     # テーブルの表示
-    st.write('細菌毎の陽性/陰性の検査数:')
+    st.write('細菌毎の検体数の合計:')
     st.dataframe(bacteria_counts)
 
 with col2:
-    # バクテリアカウントをグラフで可視化
+    # 検体数の合計をグラフで可視化
     fig, ax = plt.subplots(figsize=(6, 6))
-    ax.barh(bacteria_counts['バクテリア名'], bacteria_counts['カウント数'], color='skyblue')
+    ax.barh(bacteria_counts['バクテリア名'], bacteria_counts['検体数の合計'], color='skyblue')
     
-    # Adjusting font sizes
-    ax.set_xlabel('陽性/陰性の検査数', fontsize=18)
-    ax.set_ylabel('細菌数', fontsize=18)
-    ax.set_title('陽性/陰性の検査数', fontsize=20)
+    # フォントサイズの調整
+    ax.set_xlabel('検体数の合計', fontsize=18)
+    ax.set_ylabel('細菌名', fontsize=18)
+    ax.set_title('細菌毎の検体数の合計', fontsize=20)
     ax.tick_params(axis='both', which='major', labelsize=18)
     
     ax.invert_yaxis()  # バーを上から降順に表示
