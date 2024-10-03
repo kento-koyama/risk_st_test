@@ -11,7 +11,7 @@ font_path = 'NotoSansCJKjp-Regular.otf'  # プロジェクトディレクトリ�
 
 # Streamlit のアプリケーション
 st.title('食中毒細菌の陽性割合の統計値')
-st.write("check out this [食中毒細菌汚染実態_汚染率.csv](%s)" % csv_url)
+st.write("[食中毒細菌汚染実態_汚染率.csv](%s)の可視化です。" % csv_url)
 st.write('表の右上に表示されるボタンから、表をcsvファイルとしてダウンロードできます。')
 st.write('-----------')
 
