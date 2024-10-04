@@ -106,3 +106,11 @@ st.write('-----------')
 # 選択されたカテゴリと食品名に基づくデータの表示
 st.write(f'選択された食品カテゴリと食品名に該当するデータ {group_title}')
 st.dataframe(df_filtered)
+
+
+st.write('-----------')
+
+# 陽性数が1以上のデータをフィルタリングして表示
+positive_df = df_filtered[df_filtered['陽性数'] >= 1]
+st.write(f'陽性数が1以上のデータ {group_title}')
+st.dataframe(positive_df)
