@@ -98,3 +98,7 @@ with col4:
     st.pyplot(fig2)
 
 st.write('-----------')
+
+# 選択されたカテゴリと食品名に基づくデータの表示
+st.write(f'選択された食品カテゴリと食品名に該当するデータ {group_title}')
+st.dataframe(df_filtered)
