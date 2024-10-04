@@ -19,6 +19,9 @@ st.write("[食中毒細菌汚染実態_汚染率.csv](%s)の可視化です。" 
 st.write('表の右上に表示されるボタンから、表をcsvファイルとしてダウンロードできます。')
 st.write('-----------')
 
+# サイドバーにタイトルを追加
+st.sidebar.title("検索")
+
 # フォントの設定
 fm.fontManager.addfont(font_path)
 font_prop = fm.FontProperties(fname=font_path)
