@@ -7,7 +7,7 @@ import matplotlib.font_manager as fm
 csv_url = "https://raw.githubusercontent.com/kento-koyama/food_micro_data_risk/main/%E9%A3%9F%E4%B8%AD%E6%AF%92%E7%B4%B0%E8%8F%8C%E6%B1%9A%E6%9F%93%E5%AE%9F%E6%85%8B_%E6%B1%9A%E6%9F%93%E7%8E%87.csv"
 csv_url_gui = "https://github.com/kento-koyama/food_micro_data_risk/blob/main/%E9%A3%9F%E4%B8%AD%E6%AF%92%E7%B4%B0%E8%8F%8C%E6%B1%9A%E6%9F%93%E5%AE%9F%E6%85%8B_%E6%B1%9A%E6%9F%93%E7%8E%87.csv"
 # フォントファイルのパスを設定
-font_path = 'NotoSansCJKjp-Regular.otf'  # プロジェクトディレクトリ内のフォントファイルを指定
+font_path = 'NotoSansCJKjp-Regular.otf'
 
 # Streamlit のアプリケーション
 st.title('食中毒細菌の陽性割合の統計値')
@@ -26,22 +26,33 @@ df = pd.read_csv(csv_url, encoding='utf-8-sig')
 # 必要なカラムの欠損値を削除
 df = df[df['検体数'].notna() & df['陽性数'].notna()]
 
-# サイドバーで食品群を選択
-food_groups = df['食品カテゴリ'].unique()  # ユニークな食品群を取得
-selected_group = st.sidebar.selectbox('食品群を選択してください:', ['すべて'] + list(food_groups))
+# サイドバーで食品カテゴリを選択
+food_groups = df['食品カテゴリ'].unique()  # ユニークな食品カテゴリを取得
+selected_group = st.sidebar.selectbox('食品カテゴリを選択してください:', ['すべて'] + list(food_groups))
 
-# 選択された食品群に基づいてデータをフィルタリング
+# 選択された食品カテゴリに基づいて食品名を動的に変更
 if selected_group != 'すべて':
-    df = df[df['食品カテゴリ'] == selected_group]
+    df_filtered = df[df['食品カテゴリ'] == selected_group]
+else:
+    df_filtered = df
+
+# サイドバーで食品名を選択
+food_names = df_filtered['食品名'].unique()
+selected_food = st.sidebar.selectbox('食品名を選択してください:', ['すべて'] + list(food_names))
+
+# 選択された食品名に基づいてデータをフィルタリング
+if selected_food != 'すべて':
+    df_filtered = df_filtered[df_filtered['食品名'] == selected_food]
 
 # 細菌ごとの検体数と陽性数の合計を計算
-bacteria_counts = df.groupby('細菌名').agg({'検体数': 'sum', '陽性数': 'sum'}).reset_index()
+bacteria_counts = df_filtered.groupby('細菌名').agg({'検体数': 'sum', '陽性数': 'sum'}).reset_index()
 
 # カラム名の変更
 bacteria_counts.columns = ['バクテリア名', '検体数の合計', '陽性数の合計']
 
-# タイトルに選択された食品群を記載
-group_title = f"（{selected_group}）" if selected_group != 'すべて' else "（すべての食品群）"
+# タイトルに選択された食品カテゴリと食品名を記載
+group_title = f"（{selected_group} - {selected_food}）" if selected_group != 'すべて' and selected_food != 'すべて' else \
+              f"（{selected_group}）" if selected_group != 'すべて' else "（すべての食品カテゴリと食品名）"
 
 # サイドバイサイドのレイアウト for 検体数
 col1, col2 = st.columns(2)
