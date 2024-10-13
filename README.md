@@ -1,4 +1,4 @@
-# 微生物による食品の汚染が発生する確率を可視化するシステム
+# 微生物による汚染が発生した割合の見える化
 
 Webシステム：https://m7gk8u5qjmoysfsmf5kgqk.streamlit.app/<br>
 
