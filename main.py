@@ -14,7 +14,7 @@ csv_url_gui = "https://github.com/kento-koyama/food_micro_data_risk/blob/main/%E
 font_path = 'NotoSansCJKjp-Regular.otf'
 
 # Streamlit のアプリケーション
-st.title('食中毒細菌の陽性割合の統計値')
+st.title('食中毒細菌の陽性率の統計値')
 st.write("[食中毒細菌汚染実態_汚染率.csv](%s)の可視化です。" % csv_url_gui)
 st.write('各表をcsvファイルとしてダウンロードできます。')
 st.write('-----------')
@@ -83,23 +83,23 @@ with col2:
 st.write('-----------')
 
 # 陽性割合を計算
-bacteria_counts['陽性割合 (%)'] = bacteria_counts['陽性数'] / bacteria_counts['検体数'] * 100
+bacteria_counts['陽性率 (%)'] = bacteria_counts['陽性数'] / bacteria_counts['検体数'] * 100
 
 # サイドバイサイドのレイアウト for 陽性割合
 col3, col4 = st.columns(2)
 
 with col3:
     # 陽性割合の表の表示
-    st.write(f'細菌毎の陽性割合 {group_title}')
-    st.dataframe(bacteria_counts[['バクテリア名', '陽性割合 (%)']])
+    st.write(f'細菌毎の陽性率 {group_title}')
+    st.dataframe(bacteria_counts[['バクテリア名', '陽性率 (%)']])
 
 with col4:
     # 陽性割合をグラフで可視化
     fig2, ax2 = plt.subplots(figsize=(6, 6))
-    ax2.barh(bacteria_counts['バクテリア名'], bacteria_counts['陽性割合 (%)'], color='skyblue')
-    ax2.set_xlabel('陽性割合 (%)', fontsize=18)
+    ax2.barh(bacteria_counts['バクテリア名'], bacteria_counts['陽性率 (%)'], color='skyblue')
+    ax2.set_xlabel('陽性率 (%)', fontsize=18)
     ax2.set_ylabel('細菌名', fontsize=18)
-    ax2.set_title(f'細菌毎の陽性割合 {group_title}', fontsize=20)
+    ax2.set_title(f'細菌毎の陽性率 {group_title}', fontsize=20)
     ax2.tick_params(axis='both', which='major', labelsize=18)
     ax2.invert_yaxis()
     st.pyplot(fig2)
