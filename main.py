@@ -66,7 +66,7 @@ col1, col2 = st.columns(2)
 
 with col1:
     # 検体数の表の表示
-    st.write(f'細菌ごとの検体数 {group_title}')
+    st.write(f'細菌毎の検体数 {group_title}')
     st.dataframe(bacteria_counts[['バクテリア名', '検体数']])
 
 with col2:
