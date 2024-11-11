@@ -66,7 +66,7 @@ col1, col2 = st.columns(2)
 
 with col1:
     # 検体数の表の表示
-    st.write(f'細菌毎の検体数 {group_title}')
+    st.write(f'細菌別の食品検体数 {group_title}')
     st.dataframe(bacteria_counts[['バクテリア名', '検体数']])
 
 with col2:
@@ -75,7 +75,7 @@ with col2:
     ax1.barh(bacteria_counts['バクテリア名'], bacteria_counts['検体数'], color='skyblue')
     ax1.set_xlabel('検体数', fontsize=18)
     ax1.set_ylabel('細菌名', fontsize=18)
-    ax1.set_title(f'細菌毎の検体数 {group_title}', fontsize=20)
+    ax1.set_title(f'細菌別の食品検体数 {group_title}', fontsize=20)
     ax1.tick_params(axis='both', which='major', labelsize=18)
     ax1.invert_yaxis()
     st.pyplot(fig1)
@@ -90,7 +90,7 @@ col3, col4 = st.columns(2)
 
 with col3:
     # 陽性割合の表の表示
-    st.write(f'細菌毎の陽性率 {group_title}')
+    st.write(f'細菌の陽性率 {group_title}')
     st.dataframe(bacteria_counts[['バクテリア名', '陽性率 (%)']])
 
 with col4:
@@ -99,7 +99,7 @@ with col4:
     ax2.barh(bacteria_counts['バクテリア名'], bacteria_counts['陽性率 (%)'], color='skyblue')
     ax2.set_xlabel('陽性率 (%)', fontsize=18)
     ax2.set_ylabel('細菌名', fontsize=18)
-    ax2.set_title(f'細菌毎の陽性率 {group_title}', fontsize=20)
+    ax2.set_title(f'細菌の陽性率 {group_title}', fontsize=20)
     ax2.tick_params(axis='both', which='major', labelsize=18)
     ax2.invert_yaxis()
     st.pyplot(fig2)
