@@ -67,7 +67,7 @@ col1, col2 = st.columns(2)
 with col1:
     # 検体数の表の表示
     st.write(f'細菌別の食品検体数 {group_title}')
-    st.dataframe(bacteria_counts[['バクテリア名', '検体数']])
+    st.dataframe(bacteria_counts[['バクテリア名', '検体数']],hide_index=True)
 
 with col2:
     # 検体数の合計をグラフで可視化
@@ -91,7 +91,7 @@ col3, col4 = st.columns(2)
 with col3:
     # 陽性割合の表の表示
     st.write(f'細菌の陽性率 {group_title}')
-    st.dataframe(bacteria_counts[['バクテリア名', '陽性率 (%)']])
+    st.(bacteria_counts[['バクテリア名', '陽性率 (%)']],hide_index=True)
 
 with col4:
     # 陽性割合をグラフで可視化
@@ -108,7 +108,7 @@ st.write('-----------')
 
 # 選択されたカテゴリと食品名に基づくデータの表示
 st.write(f'選択された食品カテゴリと食品名に該当するデータ {group_title}')
-st.dataframe(df_filtered)
+st.(df_filtered,hide_index=True)
 
 
 st.write('-----------')
@@ -116,4 +116,4 @@ st.write('-----------')
 # 陽性数が1以上のデータをフィルタリングして表示
 positive_df = df_filtered[df_filtered['陽性数'] >= 1]
 st.write(f'陽性数が1以上のデータ {group_title}')
-st.dataframe(positive_df)
+st.dataframe(positive_df,hide_index=True)
