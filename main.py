@@ -91,7 +91,7 @@ col3, col4 = st.columns(2)
 with col3:
     # 陽性割合の表の表示
     st.write(f'細菌の陽性率 {group_title}')
-    st.(bacteria_counts[['バクテリア名', '陽性率 (%)']],hide_index=True)
+    st.dataframe(bacteria_counts[['バクテリア名', '陽性率 (%)']],hide_index=True)
 
 with col4:
     # 陽性割合をグラフで可視化
