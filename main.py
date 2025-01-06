@@ -33,6 +33,10 @@ df = pd.read_csv(csv_url, encoding='utf-8-sig')
 # 必要なカラムの欠損値を削除
 df = df[df['検体数'].notna() & df['陽性数'].notna()]
 
+# 細菌名を"Campylobacter spp."でまとめる
+df['細菌名_詳細'] = df['細菌名']
+df['細菌名'] = df['細菌名'].apply(lambda x: 'Campylobacter spp.' if 'Campylobacter' in str(x) else x)
+
 # サイドバーで食品カテゴリを選択
 food_groups = df['食品カテゴリ'].unique()  # ユニークな食品カテゴリを取得
 selected_group = st.sidebar.selectbox('食品カテゴリを選択してください:', ['すべて'] + list(food_groups))
