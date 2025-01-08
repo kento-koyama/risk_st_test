@@ -9,10 +9,10 @@ RUN apt-get update && \
     pip install --upgrade pip && \
     pip install -r requirements.txt
 
-EXPOSE 8501
+EXPOSE 8080
 
 COPY . /app
 
 ENTRYPOINT ["streamlit", "run"]
 
-CMD ["main.py"]
+CMD ["main.py", "--server.port=8080"]
